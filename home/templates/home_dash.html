@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Test Angka</h1>
+
+    <input type="number" placeholder="Input Angka" id="number">
+    <div style="display: flex">
+        <button onclick="triangle()">Generate Segitiga</button>
+        <button onclick="odd()">Generate Bilangan Ganjil</button>
+        <button onclick="prime()">Generate Bilangan Prime</button>
+    </div>
+    <h3>Result</h3>
+    <div id="result">
+
+    </div>
+
+    <script>
+    function triangle()
+    {
+        document.getElementById("result").innerHTML = ''
+
+        let number = document.getElementById('number').value
+        let array_number = Array.from(String(number), Number);
+
+        let display = ''
+        array_number.forEach(function (num, index) {
+            display += num
+            display += Array(index+1).fill('0').join('')
+            display += '<br>'
+        })
+
+        document.getElementById("result").innerHTML = display
+    }
+
+    function odd()
+    {
+        document.getElementById("result").innerHTML = ''
+
+        let number = document.getElementById('number').value
+
+        let display = ''
+        for (let i=0; i < number; i++)
+        {
+            if (i%2 === 1)
+            {
+                if (i !== 1)
+                {
+                    display += ','
+                }
+                display += i
+            }
+        }
+
+        document.getElementById("result").innerHTML = display
+    }
+
+    function prime()
+    {
+        document.getElementById("result").innerHTML = ''
+
+        let number = document.getElementById('number').value
+
+        let display = '';
+        for (let i=0; i < number; i++) {
+            let num_of_divide = 0;
+            for (let x = i; x > 1; x--) {
+                if (i % x === 0) {
+                    num_of_divide += 1;
+                }
+            }
+
+            if (num_of_divide === 1)
+            {
+                if (i !== 2)
+                {
+                    display += ', '
+                }
+                display += i
+            }
+        }
+
+        document.getElementById("result").innerHTML = display
+    }
+</script>
+</body>
+</html>
